@@ -1,4 +1,5 @@
 import sys
+import shutil
 
 
 def main():
@@ -17,6 +18,8 @@ def main():
 
             if target in ["type", "echo", "exit"]:
                 print(f"{target} is a shell builtin")
+            elif path := shutil.which(target):
+                print(f"{target} is {path}")
             else:
                 print(f"{target}: not found")
 
