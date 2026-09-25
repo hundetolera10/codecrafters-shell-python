@@ -9,8 +9,10 @@ def main():
             break
         elif command.startswith("echo "):
             print(command[5:])
+        elif command[5:] in ["type","echo","exit"]:
+            print(f"{command[5:]}: command found")
         else:
-            print(f"{command}: command not found")
+            print(f"{command.strip('type')}: not found")
     
 if __name__ == "__main__":
     main()
