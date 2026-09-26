@@ -6,7 +6,7 @@ import subprocess
 def main():
 
     # Commands that our shell handles itself
-    builtin_commands = ["exit", "echo", "type", "pwd"]
+    builtin_commands = ["exit", "echo", "type", "pwd", "cd"]
 
     # Keep the shell running until the user enters "exit"
     while True:
@@ -61,6 +61,14 @@ def main():
             # os.getcwd() returns the current working directory
             print(os.getcwd())
 
+        elif command == "cd":
+            target_dir= " ".join(arguments)
+            try:
+                os.chdir(target_dir)
+            except FileNotFoundError:
+                print(f"cd:{target_dir}: No such file or directory")
+            except PermissionError:
+                print(f"cd:{target_dir}: Permission denied")
         # -------------------------
         # TYPE BUILTIN
         # -------------------------
