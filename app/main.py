@@ -52,13 +52,9 @@ def main():
             # Example:
             # ["hello", "world"] -> "hello world"
             print(" ".join(arguments))
-
-        # -------------------------
-        # PWD BUILTIN
-        # -------------------------
+        
         elif command == "pwd":
 
-            # os.getcwd() returns the current working directory
             print(os.getcwd())
 
         elif command == "cd":
@@ -66,9 +62,9 @@ def main():
             try:
                 os.chdir(target_dir)
             except FileNotFoundError:
-                print(f"cd:{target_dir}: No such file or directory")
+                print(f"cd: {target_dir}: No such file or directory")
             except PermissionError:
-                print(f"cd:{target_dir}: Permission denied")
+                print(f"cd: {target_dir}: Permission denied")
         # -------------------------
         # TYPE BUILTIN
         # -------------------------
