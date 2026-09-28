@@ -3,6 +3,7 @@ import os
 import subprocess
 
 
+
 def main():
 
     # Commands that our shell handles itself
@@ -59,12 +60,15 @@ def main():
 
         elif command == "cd":
             target_dir= " ".join(arguments)
+            if target_dir == "~":
+                target_dir =os.getenv("HOME") or os.path.expanduser("~")
             try:
                 os.chdir(target_dir)
             except FileNotFoundError:
                 print(f"cd: {target_dir}: No such file or directory")
             except PermissionError:
                 print(f"cd: {target_dir}: Permission denied")
+              
         # -------------------------
         # TYPE BUILTIN
         # -------------------------
