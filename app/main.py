@@ -1,7 +1,7 @@
 import sys
 import os
 import subprocess
-
+import shlex
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
         # "echo hello world"
         # becomes:
         # ["echo", "hello", "world"]
-        parts = user_input.split()
+        parts = shlex.split(user_input)
 
         # If the user presses Enter without typing anything,
         # restart the loop and display another prompt
